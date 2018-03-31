@@ -1,0 +1,37 @@
+{
+  "name": "thebabv2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "babel-node server/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ClintonBaker/thebabv2.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ClintonBaker/thebabv2/issues"
+  },
+  "homepage": "https://github.com/ClintonBaker/thebabv2#readme",
+  "dependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "express": "^4.16.3"
+  },
+  "babel": {
+    "plugins": [],
+    "presets": [
+      "env",
+      "stage-0"
+    ]
+  },
+  "devDependencies": {
+    "nodemon": "^1.17.3"
+  }
+}

@@ -1,10 +1,5 @@
-import express from "express";
-const app = express();
+import app from "../app";
 
-app.get("*", (req, res) => {
-  res.end("Hello Express");
-});
-
-app.listen(3000, (req, res) => {
+app.listen(8080, (req, res) => {
   console.log("Server spinning up!");
 });

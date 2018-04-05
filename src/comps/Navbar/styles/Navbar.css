@@ -1,0 +1,41 @@
+.Navbar {
+	layout: row;
+	content-x: space-between;
+	content-y: center;
+	padding: 0 24px;
+	width: 100vw;
+	height: 50px;
+	contain: 1199px 24px;
+}
+
+:global .Navbar-innerPage-true {
+	background: color-dark2;
+	color: color-white0;
+	:local .logo {
+		color: color-white0;
+		text-shadow: text-shadow0;
+	}
+}
+
+:global .Navbar-innerPage-false {
+	background: none;
+	color: color-dark0;
+	:local .logo {
+		color: color-dark2;
+	}
+}
+
+.logoBox {
+
+}
+
+.logo {
+	font-size: 20px;
+}
+
+.linksBox {
+	layout: row;
+	p {
+		margin: 0 12px;
+	}
+}

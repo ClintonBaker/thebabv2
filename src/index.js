@@ -1,8 +1,14 @@
+import { Provider } from 'react-redux';
+import ReactDOM from 'react-dom';
 import React from 'react';
-import { render } from 'react-dom';
+import App from './App';
+import './styles/index.styl';
+import { store } from './store';
+require('./types');
 
-const MainApp = () => {
-  return <h1>Hello React!</h1>;
-};
-
-render(<MainApp />, document.querySelector('app'));
+ReactDOM.render(
+  <Provider store={store}>
+    <App />
+  </Provider>,
+  document.querySelector('app')
+);

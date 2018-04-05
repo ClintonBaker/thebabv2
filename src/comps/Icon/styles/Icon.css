@@ -1,0 +1,9 @@
+.Icon {
+	layout: row;
+	content-y: center;
+}
+
+:global .icon-lg {
+	font-size: 26px;
+	color: color-accent0;
+}

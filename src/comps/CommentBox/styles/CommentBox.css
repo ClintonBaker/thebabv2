@@ -1,0 +1,15 @@
+.CommentBox {
+  margin-top: 25px;
+  layout: column;
+}
+
+.CommentArea{
+  height: 5em;
+  width: 950px;
+}
+
+.CommentButton{
+  layout: row;
+  margin-top: 5px;
+  justify-content: flex-end;
+}

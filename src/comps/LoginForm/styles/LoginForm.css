@@ -1,0 +1,17 @@
+.LoginForm {
+
+}
+
+.form {
+	max-width: 500px;
+	margin: 0 auto;
+	padding: 24px;
+
+	:global .Input-comp {
+		margin: 12px 0;
+	}
+
+	:global .Button-comp {
+		margin-top: 12px;
+	}
+}

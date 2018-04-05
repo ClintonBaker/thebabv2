@@ -1,18 +1,18 @@
-//Webpack config for production
+//Webpack config for development
 
 import path from 'path';
 import webpack from 'webpack';
 
 export default {
   mode: 'production',
-  devtool: 'source-map',
+  devtool: 'eval-source-map',
   entry: path.join(process.cwd(), 'src/index'),
   output: {
     filename: 'bundle.js',
     path: path.join(process.cwd(), 'public', 'js'),
     publicPath: '/js'
   },
-  plugins: [new webpack.optimize.OccurrenceOrderPlugin(true)],
+  plugins: [new webpack.NoEmitOnErrorsPlugin()],
   module: {
     rules: [
       {

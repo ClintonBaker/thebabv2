@@ -1,0 +1,20 @@
+.Button {
+	height: 40px;
+	padding: 1rem  48px;
+	border-radius: 50px;
+	color: color-white0;
+	background-color: color-accent5;
+	box-shadow: shadow1;
+	font-family: mainFontBold;
+	font-weight: 600;
+	line-height: 1;
+	letter-spacing: .02rem;
+	text-decoration: none;
+	transition: all .3s;
+	font-size: 1.6rem;
+	max-width: 200px;
+
+	&:hover {
+		background: color-accent5-light;
+	}
+}

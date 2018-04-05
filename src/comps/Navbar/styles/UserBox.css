@@ -1,0 +1,9 @@
+.UserBox {
+	layout: row;
+	content-y: center;
+	small {
+		font-size: 70%;
+		margin-left: 6px;
+		text-transform: uppercase;
+	}
+}

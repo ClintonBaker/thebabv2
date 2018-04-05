@@ -1,0 +1,59 @@
+.Home {
+  layout: column;
+  content-x: center;
+  contain: 1199px 24px;
+}
+
+.header {
+  height: 180px;
+  layout: column;
+  content-x: center;
+  content-y: center;
+  color: color-dark0;
+  width: 130vw;
+  height: 230px;
+}
+
+.header p {
+  max-width: 780px;
+  margin-top: 12px;
+  font-size: 1.8rem;
+  text-shadow: text-shadow0;
+}
+
+.create-new {
+  width: 75%;
+  layout: row;
+  margin: 8px auto;
+  content-x: center;
+  color: color-dark2;
+  font-style: italic;
+  opacity: 0.25;
+  transition: opacity 0.23s;
+
+  &:hover {
+    opacity: 1;
+  }
+}
+
+.body {
+  width: 100%;
+  layout: column;
+  content-x: center;
+}
+
+.thingBox {
+  width: 100%;
+  max-width: 980px;
+  padding: 0 24px;
+  margin: 0 auto;
+  layout: row;
+  flex-wrap: wrap;
+  content-x: space-between;
+}
+
+.loadingIndicator {
+  h3 {
+    opacity: 0.5;
+  }
+}

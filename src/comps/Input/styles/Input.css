@@ -1,0 +1,51 @@
+.Input {
+	layout: column;
+	width: 100%;
+}
+
+.box {
+	padding: 1rem;
+	background: color-white0;
+	border-radius: .4rem;
+	height: 45px;
+	min-height: 45px;
+	max-height: 45px;
+	display: inline-flex;
+	flex-wrap: nowrap;
+	cursor: pointer;
+	border-radius: 50px;
+	box-shadow: shadow1;
+	width: 100%;
+	transition: all 0.23s;
+}
+
+.Input label {
+	font-size: 80%;
+}
+
+.Input input {
+	padding: 0 1rem 2px;
+	font-family: inputFont;
+	height: 100%;
+	width: 100%;
+	background: none;
+	position: relative;
+	font-weight: 500;
+	color: color-dark2;
+	font-size: 1.6rem;
+	letter-spacing: .05rem;
+	line-height: 1.2;
+
+	&::-webkit-input-placeholder {
+		font-family: inputFont;
+		font-weight: 500;
+		color: color-dark1;
+		font-size: 1.5rem;
+		letter-spacing: .05rem;
+		line-height: 1.2;
+	}
+}
+
+.icon {
+	margin-right: 6px;
+}

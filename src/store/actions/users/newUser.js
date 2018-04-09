@@ -8,21 +8,13 @@ export default user => {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify(user)
-    })
-      .then(response => {
-        if (response.ok) {
-          return response.json();
-        }
-        throw new Error('Things went wrong');
-      })
-      .then(json => {
+    }).then(response => {
+      if (response.ok) {
         dispatch({
           type: NEW_USER,
-          data: json.username
+          data: user.username
         });
-      })
-      .catch(error => {
-        console.log(error);
-      });
+      }
+    });
   };
 };

@@ -1,19 +1,27 @@
 import { AUTH_USER } from '../../consts/users';
 
-export default (name, password) => {
+export default user => {
   return dispatch => {
-    fetch('http://rest.learncode.academy/api/thebab/users')
-      .then(response => response.json())
-      .then(users => {
-        let user = users.filter(user => {
-          return user.username === name;
+    fetch('/login', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(user)
+    }).then(response => {
+      if (response.ok) {
+        dispatch({
+          type: AUTH_USER,
+          user: user.username,
+          auth: true
         });
-        user.length && user[0].password === password
-          ? dispatch({
-            type: AUTH_USER,
-            user: user[0].username
-          })
-          : null
-      });
-  }
-}
+      } else {
+        dispatch({
+          type: AUTH_USER,
+          user: user.username,
+          auth: false
+        });
+      }
+    });
+  };
+};

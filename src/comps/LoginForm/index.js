@@ -6,17 +6,22 @@ const mapStateToProps = state => {
   return {
     user: state.users.user,
     authenticated: state.users.authenticated
-  }
-}
+  };
+};
 
 const mapActionsToProps = dispatch => {
-	return {
-		actions: {
-			login(user) {
-				dispatch(authUser(user.name, user.password))
-      },
-		},
-	};
+  return {
+    actions: {
+      login(user) {
+        dispatch(
+          authUser({
+            username: user.name,
+            password: user.password
+          })
+        );
+      }
+    }
+  };
 };
 
 export default connect(mapStateToProps, mapActionsToProps)(LoginForm);

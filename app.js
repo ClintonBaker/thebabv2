@@ -1,11 +1,15 @@
-import express from "express";
-import routes from "./routes";
-import dotenv from "dotenv";
-import path from "path";
-import logger from "morgan";
-import bodyParser from "body-parser";
-import cookieParser from "cookie-parser";
-import webpackDevServer from "./webpack/dev-server";
+import express from 'express';
+import routes from './routes';
+import dotenv from 'dotenv';
+import path from 'path';
+import logger from 'morgan';
+import bodyParser from 'body-parser';
+import cookieParser from 'cookie-parser';
+import webpackDevServer from './webpack/dev-server';
+import passport from 'passport';
+import LocalStrategy from 'passport-local';
+
+const User = require('./models/user');
 
 //setup dotenv
 dotenv.config({
@@ -22,20 +26,34 @@ app.use(bodyParser.urlencoded({ extended: false }));
 //cookie parser
 app.use(cookieParser());
 
+//Configure Passport
+app.use(
+  require('express-session')({
+    secret: 'CoWzJump OvArR MooonZ',
+    resave: false,
+    saveUninitialized: false
+  })
+);
+app.use(passport.initialize());
+app.use(passport.session());
+passport.use(new LocalStrategy(User.authenticate()));
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
+
 //logger
-app.use(logger("combined"));
+app.use(logger('combined'));
 
 //serve static files
-app.use(express.static(path.join(__dirname, "/public")));
+app.use(express.static(path.join(__dirname, '/public')));
 
 //set up routes
-app.use("/", routes);
+app.use('/', routes);
 
 //view engine
-app.set("views", path.join(__dirname, "./views"));
-app.set("view engine", "pug");
+app.set('views', path.join(__dirname, './views'));
+app.set('view engine', 'pug');
 
-if (process.env.NODE_ENV != "production") {
+if (process.env.NODE_ENV != 'production') {
   webpackDevServer(app);
 }
 

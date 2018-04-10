@@ -9,7 +9,6 @@ export default user => {
       },
       body: JSON.stringify(user)
     }).then(response => {
-      console.log(response);
       if (response.ok) {
         dispatch({
           type: NEW_USER,

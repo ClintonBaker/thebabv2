@@ -1,4 +1,4 @@
-# thebab
+# thebabv2
 
 > It's the bread and butter of development!
 
@@ -6,7 +6,7 @@
 
 ```
 git clone https://github.com/ClintonBaker/thebabv2
-cd thebab
+cd thebabv2
 npm i
 npm start
 ```

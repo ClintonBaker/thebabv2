@@ -37,13 +37,31 @@ router.post('/thing', (req, res) => {
 });
 
 //Get Thing from DB
-router.get('/thing/:id', (req, res) => {
-  Thing.findById(req.params.id, (err, foundThing) => {
-    if (!err) {
-      res.json(foundThing);
-    }
-  });
+router.get('/thing/:id?', (req, res) => {
+  if (req.params.id) {
+    Thing.findById(req.params.id, (err, foundThing) => {
+      if (!err) {
+        res.json(foundThing);
+      }
+    });
+  } else {
+    Thing.find({}, (err, allThings) => {
+      if (!err) {
+        res.json(allThings);
+      }
+    });
+  }
 });
+
+//Get All the Things from DB
+// router.get('/thing/', (req, res) => {
+//   console.log('thing route hit!');
+//   Thing.find({}, (err, allThings) => {
+//     if (!err) {
+//       res.json(allThings);
+//     }
+//   });
+// });
 
 //Login
 router.post('/login', passport.authenticate('local'), (req, res) => {

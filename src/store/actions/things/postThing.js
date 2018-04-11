@@ -15,7 +15,6 @@ export default form => {
         }
       })
       .then(json => {
-        console.log(json);
         dispatch({
           type: POST_THING,
           data: json.id

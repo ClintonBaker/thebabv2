@@ -5,6 +5,7 @@ import './styles/Inspect.css';
 
 class Inspect extends React.Component {
   componentWillMount() {
+    this.props.thing = {};
     this.props.actions.getThing(this.props.params.id);
   }
 
@@ -12,7 +13,7 @@ class Inspect extends React.Component {
     return (
       <div styleName="Inspect">
         <Choose>
-          <When condition={!!props.thing}>
+          <When condition={!!props.thing._id}>
             <h3>{props.thing.name}</h3>
             <a href={props.thing.link}>{props.thing.link}</a>
             <p styleName="description">{props.thing.description}</p>

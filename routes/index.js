@@ -53,16 +53,6 @@ router.get('/thing/:id?', (req, res) => {
   }
 });
 
-//Get All the Things from DB
-// router.get('/thing/', (req, res) => {
-//   console.log('thing route hit!');
-//   Thing.find({}, (err, allThings) => {
-//     if (!err) {
-//       res.json(allThings);
-//     }
-//   });
-// });
-
 //Login
 router.post('/login', passport.authenticate('local'), (req, res) => {
   res.json();

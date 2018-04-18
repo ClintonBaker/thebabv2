@@ -10,7 +10,7 @@ export default (state = initialState, action) => {
   } else if (action.type === LOGOUT) {
     return { ...state, user: 'Guest', authenticated: false };
   } else if (action.type === USER_IS_AUTH) {
-    return state;
+    return { ...state, user: action.user, authenticated: action.auth };
   } else {
     return state;
   }

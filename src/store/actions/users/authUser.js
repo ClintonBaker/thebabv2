@@ -7,6 +7,7 @@ export default user => {
       headers: {
         'Content-Type': 'application/json'
       },
+      credentials: 'include',
       body: JSON.stringify(user)
     }).then(response => {
       if (response.ok) {

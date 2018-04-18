@@ -25,22 +25,13 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 //cookie parser
-app.use(cookieParser());
+app.use(cookieParser('CoWzJump OvArR MooonZ'));
 
 //logger
 app.use(logger('combined'));
 
 //serve static files
 app.use(express.static(path.join(__dirname, '/public')));
-
-//Configure Passport
-// app.use(
-//   require('express-session')({
-//     secret: 'CoWzJump OvArR MooonZ',
-//     resave: false,
-//     saveUninitialized: false
-//   })
-// );
 
 app.use(
   session({
@@ -53,8 +44,14 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 passport.use(new LocalStrategy(User.authenticate()));
-passport.serializeUser(User.serializeUser());
-passport.deserializeUser(User.deserializeUser());
+passport.serializeUser((user, done) => {
+  done(null, user.username);
+});
+passport.deserializeUser((username, done) => {
+  User.findOne({ username: username }, (err, user) => {
+    done(err, user);
+  });
+});
 
 //set up routes
 app.use('/', routes);

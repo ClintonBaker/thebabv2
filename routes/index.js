@@ -51,22 +51,18 @@ router.get('/thing/:id?', (req, res) => {
 
 //Login
 router.post('/login', passport.authenticate('local'), (req, res) => {
-  console.log(req.user);
-  console.log(req.isAuthenticated());
-  res.json();
+  return res.json();
 });
 
 //Logout
 router.get('/logout', (req, res) => {
   req.logout();
-  res.json();
+  return res.json();
 });
 
 //User is authenticated?
 router.get('/user', (req, res) => {
-  console.log(req.user);
-  console.log(req.isAuthenticated());
-  res.json({ authenicated: req.isAuthenticated() });
+  return res.json({ user: req.user });
 });
 
 router.get('*', (req, res) => {

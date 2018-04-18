@@ -7,7 +7,6 @@ const UserBox = props => {
   props.isAuth();
   return (
     <div styleName="UserBox" e2e={props.e2e || 'UserBox'}>
-      {console.log('UserBox is rendering')}
       <Choose>
         <When condition={props.authenticated}>
           <a onClick={props.logout}>

@@ -4,10 +4,6 @@ const router = express.Router();
 const User = require('../models/user');
 const Thing = require('../models/thing');
 
-router.get('/', (req, res) => {
-  res.render('index');
-});
-
 //Register New User
 router.post('/register', (req, res) => {
   const newUser = new User({ username: req.body.username });
@@ -55,7 +51,22 @@ router.get('/thing/:id?', (req, res) => {
 
 //Login
 router.post('/login', passport.authenticate('local'), (req, res) => {
-  res.json();
+  return res.json();
+});
+
+//Logout
+router.get('/logout', (req, res) => {
+  req.logout();
+  return res.json();
+});
+
+//User is authenticated?
+router.get('/user', (req, res) => {
+  return res.json({ user: req.user });
+});
+
+router.get('*', (req, res) => {
+  res.render('index');
 });
 
 export default router;

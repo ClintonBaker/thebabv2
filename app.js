@@ -1,4 +1,5 @@
 import express from 'express';
+import session from 'express-session';
 import routes from './routes';
 import dotenv from 'dotenv';
 import path from 'path';
@@ -24,27 +25,33 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 //cookie parser
-app.use(cookieParser());
-
-//Configure Passport
-app.use(
-  require('express-session')({
-    secret: 'CoWzJump OvArR MooonZ',
-    resave: false,
-    saveUninitialized: false
-  })
-);
-app.use(passport.initialize());
-app.use(passport.session());
-passport.use(new LocalStrategy(User.authenticate()));
-passport.serializeUser(User.serializeUser());
-passport.deserializeUser(User.deserializeUser());
+app.use(cookieParser('CoWzJump OvArR MooonZ'));
 
 //logger
 app.use(logger('combined'));
 
 //serve static files
 app.use(express.static(path.join(__dirname, '/public')));
+
+app.use(
+  session({
+    secret: 'CoWzJump OvArR MooonZ',
+    resave: false,
+    saveUninitialized: false
+  })
+);
+
+app.use(passport.initialize());
+app.use(passport.session());
+passport.use(new LocalStrategy(User.authenticate()));
+passport.serializeUser((user, done) => {
+  done(null, user.username);
+});
+passport.deserializeUser((username, done) => {
+  User.findOne({ username: username }, (err, user) => {
+    done(err, user);
+  });
+});
 
 //set up routes
 app.use('/', routes);

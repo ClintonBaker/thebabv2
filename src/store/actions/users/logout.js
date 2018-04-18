@@ -2,8 +2,10 @@ import { LOGOUT } from '../../consts/users';
 
 export default () => {
   return dispatch => {
-    dispatch({
-      type: LOGOUT
-    })
-  }
-}
+    fetch('/logout', { credentials: 'include' }).then(response => {
+      dispatch({
+        type: LOGOUT
+      });
+    });
+  };
+};

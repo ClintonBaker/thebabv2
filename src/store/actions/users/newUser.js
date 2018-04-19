@@ -8,13 +8,19 @@ export default user => {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify(user)
-    }).then(response => {
-      if (response.ok) {
+    })
+      .then(response => {
+        if (response.ok) {
+          return response.json();
+        }
+      })
+      .then(json => {
+        console.log(json);
         dispatch({
           type: NEW_USER,
-          data: user.username
+          user: json.user.username,
+          id: json.user._id
         });
-      }
-    });
+      });
   };
 };

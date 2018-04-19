@@ -11,11 +11,13 @@ export default () => {
           ? dispatch({
               type: USER_IS_AUTH,
               user: json.user.username,
+              id: json.user._id,
               auth: true
             })
           : dispatch({
               type: USER_IS_AUTH,
               user: 'Guest',
+              id: null,
               auth: false
             });
       });

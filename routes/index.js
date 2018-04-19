@@ -10,7 +10,7 @@ router.post('/register', (req, res) => {
   User.register(newUser, req.body.password, (err, user) => {
     if (!err) {
       passport.authenticate('local');
-      res.json();
+      res.json({ user: user });
     }
   });
 });
@@ -49,9 +49,27 @@ router.get('/thing/:id?', (req, res) => {
   }
 });
 
+//Add a comment
+router.post('/thing/:id', (req, res) => {
+  if (req.isAuthenticated()) {
+    Thing.findById(req.params.id, (err, thing) => {
+      if (err) {
+        console.log(err);
+      } else {
+        thing.comments.push({
+          author: req.body.comment.author,
+          comment: req.body.comment.comment
+        });
+        thing.save();
+        return res.json();
+      }
+    });
+  }
+});
+
 //Login
 router.post('/login', passport.authenticate('local'), (req, res) => {
-  return res.json();
+  return res.json({ user: req.user });
 });
 
 //Logout

@@ -32,7 +32,11 @@ class Inspect extends React.Component {
                 </p>
               </Otherwise>
             </Choose>
-            <CommentBox thing={props.thing} />
+            <Choose>
+              <When condition={props.user != 'Guest'}>
+                <CommentBox thing={props.thing} />
+              </When>
+            </Choose>
           </When>
           <Otherwise>
             <small>loading</small>

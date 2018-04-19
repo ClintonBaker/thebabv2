@@ -61,7 +61,7 @@ router.post('/thing/:id', (req, res) => {
           comment: req.body.comment.comment
         });
         thing.save();
-        return res.json();
+        return res.json(thing);
       }
     });
   }

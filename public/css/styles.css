@@ -286,6 +286,13 @@
 }
 
 
+.Inspect_PageView {
+  width: 100vw;
+  height: auto;
+  margin: 0;
+  padding-bottom: 80px;
+  background: linear-gradient(3deg, #f4f4ff, #fff);
+}
 .Inspect_Inspect {
   margin: 80px auto;
   width: 950px;

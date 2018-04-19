@@ -9,10 +9,17 @@ export default thing => {
       },
       credentials: 'include',
       body: JSON.stringify(thing)
-    }).then(response => {
-      dispatch({
-        type: PUSH_COMMENT
+    })
+      .then(response => {
+        if (response.ok) {
+          return response.json();
+        }
+      })
+      .then(thing => {
+        dispatch({
+          type: PUSH_COMMENT,
+          data: thing
+        });
       });
-    });
   };
 };

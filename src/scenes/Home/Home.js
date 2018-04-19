@@ -49,9 +49,11 @@ class Home extends React.PureComponent {
   };
 
   getSearchResults = () => {
+    console.log('Search Results hit');
     this.setState(state => {
       return {
         searchResults: this.state.things.filter(thing => {
+          console.log(thing);
           let shouldReturn = false;
           thing.name.indexOf(this.state.searchValue) > -1
             ? (shouldReturn = true)

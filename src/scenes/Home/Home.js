@@ -29,6 +29,10 @@ class Home extends React.PureComponent {
     this.props.actions.getThings();
   }
 
+  keyHandler = ({ key }) => {
+    key === 'Enter' ? this.getSearchResults() : null;
+  };
+
   componentDidUpdate(prevProps) {
     prevProps.things !== this.props.things
       ? this.setState(state => {
@@ -49,11 +53,9 @@ class Home extends React.PureComponent {
   };
 
   getSearchResults = () => {
-    console.log('Search Results hit');
     this.setState(state => {
       return {
         searchResults: this.state.things.filter(thing => {
-          console.log(thing);
           let shouldReturn = false;
           thing.name.indexOf(this.state.searchValue) > -1
             ? (shouldReturn = true)
@@ -81,6 +83,7 @@ class Home extends React.PureComponent {
             <Input
               onIconClick={this.getSearchResults}
               onChange={this.setSearchValue}
+              keyHandler={this.keyHandler}
               placeholder="search query"
               value={state.searchValue}
               e2e="searchInput"

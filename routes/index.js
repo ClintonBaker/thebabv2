@@ -9,8 +9,13 @@ router.post('/register', (req, res) => {
   const newUser = new User({ username: req.body.username });
   User.register(newUser, req.body.password, (err, user) => {
     if (!err) {
-      passport.authenticate('local');
-      res.json({ user: user });
+      req.login(user, err => {
+        if (err) {
+          console.log(err);
+        }
+        return;
+      });
+      return res.json({ user: user });
     }
   });
 });

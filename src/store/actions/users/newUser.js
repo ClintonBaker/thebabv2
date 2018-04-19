@@ -7,6 +7,7 @@ export default user => {
       headers: {
         'Content-Type': 'application/json'
       },
+      credentials: 'include',
       body: JSON.stringify(user)
     })
       .then(response => {
@@ -15,7 +16,6 @@ export default user => {
         }
       })
       .then(json => {
-        console.log(json);
         dispatch({
           type: NEW_USER,
           user: json.user.username,

@@ -20,6 +20,10 @@ class NewUserForm extends React.Component {
     });
   };
 
+  keyHandler = ({ key }) => {
+    key === 'Enter' ? this.submitUser() : null;
+  };
+
   newUser = () => {
     this.props.actions.newUser({
       username: this.state.userName,
@@ -72,6 +76,7 @@ class NewUserForm extends React.Component {
             value={state.confPass}
             type="password"
             onChange={this.updateInput}
+            keyHandler={this.keyHandler}
             placeholder="Confirm password"
           />
           <Choose>
